@@ -1,0 +1,44 @@
+println '============= configuration phase ====='
+println '********************* starting reading script ********** '
+
+
+task probablyInproper {
+    println "   <$name>: I am executed in the configuration phase"
+}
+
+task simpleShort << {
+    println "   <$name>: I am executed in the execution phase"
+}
+
+task simpleLong {
+    doLast {
+        println "   <$name>: I am executed in the execution phase"
+    }
+}
+
+
+
+task backupBuild(type: Copy) {
+    from 'build.gradle'
+    into 'backup'
+}
+
+backupBuild {
+    into 'backup2'
+}
+
+
+
+['6am', '9am', '3pm'].each { time ->
+    task "hello_at_$time" << {println "Hello at $time!"}
+}
+
+
+
+
+gradle.projectsEvaluated {
+    println '============= configuration phase finished ====='
+    println '============= starting execution phase ====='
+}
+
+println '********************* finished reading script **********'

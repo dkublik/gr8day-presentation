@@ -1,0 +1,28 @@
+apply plugin: 'groovy'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile('org.spockframework:spock-core:1.0-groovy-2.4')
+}
+
+test {
+    exclude 'org/boo/**'
+    minHeapSize = "128m"
+    maxHeapSize = "512m"
+}
+
+test {
+    afterTest {
+        println "--- after test message 1"
+    }
+}
+test.afterTest {
+    println "--- after test message 2"
+}
+
+test.outputs.upToDateWhen {false}

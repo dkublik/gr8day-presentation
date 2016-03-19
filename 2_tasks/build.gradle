@@ -1,0 +1,38 @@
+/*
+
+
+task probablyInproper {
+    println "<$name>: I am executed in configuration phase"
+}
+
+project.task('probablyInproper2', {println "<$name>: configuration closure"})
+
+
+
+
+task simple {
+    doLast {
+        println "<$name>: I am executed in execution phase"
+    }
+}
+
+project.task('simple2', {
+    doLast({
+        println "<$name>: I am executed in execution phase"
+    })
+})
+
+
+
+task simpleShort << {
+    println "<$name>: I am shortcut of above and" +
+            " executed in execution phase"
+}
+
+project.task('simpleShort2').leftShift({println "<$name>: configuration closure"})
+
+
+
+
+
+*/
